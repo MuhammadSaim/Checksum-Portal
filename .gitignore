@@ -480,4 +480,3 @@ assets/
 mix-manifest.json
 /venv
 .idea/
-config/settings.py
