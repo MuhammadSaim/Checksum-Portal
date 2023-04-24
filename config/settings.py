@@ -29,9 +29,13 @@ SECRET_KEY = os.environ.get('APP_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('APP_DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'authentication.User'
+
+LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_URL = '/auth/login'
+LOGOUT_REDIRECT_URL = '/auth/login'
 
 
 # Application definition
@@ -43,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentication'
+    'authentication',
+    'dashboard'
 ]
 
 MIDDLEWARE = [

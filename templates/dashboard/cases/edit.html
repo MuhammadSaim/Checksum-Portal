@@ -1,0 +1,24 @@
+{% extends 'layouts/dashboard.html' %}
+
+{% block title %}Edit case{% endblock %}
+
+{% block content %}
+    <div class="bg-white rounded-md shadow px-6 py-10">
+        <form action="{% url 'cases.edit' case.id %}" method="post">
+            {% csrf_token %}
+            {% include 'partials/alerts.html' %}
+            <div>
+              <label for="title" class="block text-sm font-medium leading-6 text-gray-900">{{ form.title.label }} </label>
+              <div class="mt-2">
+                {{ form.title }}
+                  {% for error in form.title.errors %}
+                      <p class="text-error text-sm">{{ error }}</p>
+                  {% endfor %}
+              </div>
+            </div>
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

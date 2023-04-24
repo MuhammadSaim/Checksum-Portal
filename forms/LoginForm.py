@@ -3,13 +3,13 @@ from authentication.models import User
 
 
 class LoginForm(forms.Form):
-    email = forms.CharField(
-        label='Email',
+    username = forms.CharField(
+        label='Username',
         required=True,
         widget=forms.TextInput(
             attrs={
                 'class': 'input input-bordered w-full max-w-full',
-                'placeholder': 'someone@example.com',
+                'placeholder': 'jhon',
                 'autocomplete': 'off'
             }
         ),
@@ -29,15 +29,15 @@ class LoginForm(forms.Form):
     def clean(self):
         super(LoginForm, self).clean()
 
-        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
 
-        user = User.objects.filter(email=email).first()
+        user = User.objects.filter(username=username).first()
 
-        if not email:
-            self._errors['email'] = self.error_class([
-                'Please provide valid email'])
-            self.fields['email'].widget.attrs.update({'class': 'input-error input input-bordered w-full max-w-full'})
+        if not username:
+            self._errors['username'] = self.error_class([
+                'Please provide valid username'])
+            self.fields['username'].widget.attrs.update({'class': 'input-error input input-bordered w-full max-w-full'})
 
         if not password:
             self._errors['password'] = self.error_class([
@@ -45,9 +45,9 @@ class LoginForm(forms.Form):
             self.fields['password'].widget.attrs.update({'class': 'input-error input input-bordered w-full max-w-full'})
 
         if user is None:
-            self._errors['email'] = self.error_class([
-                'Sorry we can\'t found user with this email'])
-            self.fields['email'].widget.attrs.update({'class': 'input-error input input-bordered w-full max-w-full'})
+            self._errors['username'] = self.error_class([
+                'Sorry we can\'t found user with this username'])
+            self.fields['username'].widget.attrs.update({'class': 'input-error input input-bordered w-full max-w-full'})
 
         if len(password) < 8:
             self._errors['password'] = self.error_class([

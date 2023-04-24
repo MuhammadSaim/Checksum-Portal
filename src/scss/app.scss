@@ -1,6 +1,15 @@
 @tailwind base;
 @tailwind components;
-
-
-
 @tailwind utilities;
+
+
+// add fontawesome 6
+$fa-font-path: "../webfonts";
+
+// importing core styling file
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+
+// our project needs Regular + Solid + Brands
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/brands";
