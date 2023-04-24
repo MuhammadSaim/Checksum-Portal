@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .case_views import (
     case_all,
     case_create,
@@ -12,4 +12,5 @@ urlpatterns = [
     path('add', case_create, name="cases.create"),
     path('delete/<int:_id>', case_delete, name="cases.delete"),
     path('edit/<int:_id>', case_edit, name="cases.edit"),
+    path('<int:case>/evidance/', include('dashboard.evidence_urls')),
 ]
