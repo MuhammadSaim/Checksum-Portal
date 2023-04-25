@@ -42,7 +42,7 @@ def evidence_delete(request, case, evidence):
     case = get_object_or_404(Case, id=case)
     evidence = get_object_or_404(Evidence, id=evidence)
     evidence.delete()
-    return redirect('evidence.all', case=case.id, evidence=evidence.id)
+    return redirect('evidence.all', case=case.id)
 
 
 @login_required
