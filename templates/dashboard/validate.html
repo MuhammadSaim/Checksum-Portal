@@ -1,0 +1,47 @@
+{% extends 'layouts/dashboard.html' %}
+
+{% block title %}Validate{% endblock %}
+
+{% block content %}
+
+
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+          <h1 class="text-base font-semibold leading-6 text-gray-900">Validate</h1>
+          <p class="mt-2 text-sm text-gray-700">You can validate the evidences here</p>
+        </div>
+      </div>
+
+
+
+      <div class="bg-white rounded-md shadow px-4 py-6 mt-6">
+          <form action="{% url 'validate' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% include 'partials/alerts.html' %}
+              <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                  <div>
+                      <label for="file" class="block text-sm font-medium leading-6 text-gray-900">File</label>
+                      <div class="mt-2">
+                          <input type="file" class="file-input file-input-bordered file-input-primary file-input-md w-full max-w-full" name="file"/>
+                      </div>
+                  </div>
+                  <div>
+                      <label for="checksum" class="block text-sm font-medium leading-6 text-gray-900">Checksum</label>
+                      <div class="mt-2">
+                          <input type="text" class="input input-bordered w-full max-w-full" name="checksum"/>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="mt-3">
+                  <button type="submit" class="btn btn-primary">Validate</button>
+              </div>
+          </form>
+      </div>
+
+    </div>
+
+
+{% endblock %}
